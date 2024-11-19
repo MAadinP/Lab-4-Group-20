@@ -1,10 +1,12 @@
 module sign_extend (
-        input logic [31:0] instruction,
-        output logic [31:0] imm
+    /* verilator lint_off UNUSED */
+    input logic [31:0] instr,       
+    /* verilator lint_on UNUSED */
+      // Input instruction
+    output logic [31:0] imm_ext    // Extended immediate
 );
     always_comb begin
-        imm = {{20{instruction[31]}}, instruction[31:20]};
+        imm_ext = {{20{instr[31]}}, instr[31:20]}; // Sign extend 12-bit immediate
     end
-        
-    
+
 endmodule
