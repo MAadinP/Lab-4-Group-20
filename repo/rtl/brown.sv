@@ -1,7 +1,7 @@
 module brown#(
-    parameter ADDRESS_WIDTH = 5;
+    parameter ADDRESS_WIDTH = 5,
     parameter DATA_WIDTH = 32
-)(
+) (
     input logic clk,
     input logic ALUsrc,
     input logic [2:0] ALUctrl,
@@ -19,7 +19,6 @@ logic [DATA_WIDTH-1:0] ALUop2;
 logic [DATA_WIDTH-1:0] regOp2;
 logic [DATA_WIDTH-1:0] ImmOp = 32'b1;
 
-
 regfile register_file(
     .clk(clk),
     .AD1(rs1),
@@ -31,6 +30,7 @@ regfile register_file(
     .RD2(regOp2),
     .a0(a0)
 );
+
 alu ALU(
     .ALUop1(ALUop1),
     .ALUop2(ALUop2),
@@ -38,6 +38,7 @@ alu ALU(
     .ALUout(ALUout),
     .EQ(EQ)
 );
+
 mux MUX(
     .in0(regOp2),
     .in1(ImmOp),

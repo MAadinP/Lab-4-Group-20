@@ -16,9 +16,9 @@ module regfile #(
 logic [DATA_WIDTH-1:0] registerfile [2**ADDR_WIDTH-1:0];
 
 always_ff @(posedge clk) begin
-    
-    if(WE3) registerfile[AD3] <= WD3; 
 
+    if(WE3) registerfile[AD3] <= WD3; 
+    
 end
 
 always_comb begin
@@ -26,3 +26,5 @@ always_comb begin
     RD2 <= registerfile[AD2];
     a0 <= registerfile[5'd10];
 end
+
+endmodule
