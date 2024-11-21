@@ -47,6 +47,15 @@ protected:
             }
             ticks++;
 
+            top->rs1 = 0;
+            top->rs2 = 0;
+            top->rd = 10;
+            top->ALUsrc = 1;
+            top->ALUctrl = 0;
+            top->RegWrite = 1;
+            top->ImmOp = 3;
+
+
             if (Verilated::gotFinish())
             {
                 exit(0);
@@ -59,7 +68,7 @@ protected:
 TEST_F(BrownTestbench, EQWORKS)
 {
     top->rs1 = 0;
-    top->rs2 = 0;
+    top->rs2 = 1;
     top->ALUsrc = 0;
     top->ALUctrl = 0;
     top->RegWrite = 0;
@@ -68,17 +77,12 @@ TEST_F(BrownTestbench, EQWORKS)
     EXPECT_EQ(top->EQ, 1);
 }
 
-// TEST_F(BrownTestbench, LOADIMMWORKS)
-// {
+TEST_F(BrownTestbench, SUMWORKS)
+{
+    runLOADSimulation(3);
 
-//     top->ALUsrc = 1;
-//     top->ALUctrl = ;
-//     top->RegWrite = 0;
-    
-//     top->eval();
-
-//     EXPECT_EQ(top->out, 1);
-// }
+    EXPECT_EQ(top->a0, 3);
+}
 
 int main(int argc, char **argv)
 {
