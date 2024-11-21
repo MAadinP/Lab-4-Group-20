@@ -22,9 +22,9 @@ always_ff @(posedge clk) begin
 end
 
 always_comb begin
-    RD1 <= registerfile[AD1];
-    RD2 <= registerfile[AD2];
-    a0 <= registerfile[5'd10];
+    RD1 = registerfile[AD1];
+    RD2 = registerfile[AD2];
+    a0 = registerfile[5'd10];
 end
 
 endmodule
